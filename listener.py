@@ -28,7 +28,7 @@ def listener(**args):
     if command is not None:
         if command in help_messages:
             raise ValueError(f"出错了呜呜呜 ~ 命令 \"{command}\" 已经被注册。")
-        pattern = fr"^-{command}(?: |$)([\s\S]*)"
+        pattern = fr"^~{command}(?: |$)([\s\S]*)"
     if pattern is not None and not pattern.startswith('(?i)'):
         args['pattern'] = f"(?i){pattern}"
     else:
@@ -101,11 +101,11 @@ def listener(**args):
                                      "Error report generated.")
                     try:
                         if context.sender_id > 0 or context.sender_id == 1087968824:
-                            posthog.capture(str(context.sender_id), 'Error ' + context.text.split()[0].replace('-', ''),
+                            posthog.capture(str(context.sender_id), 'Error ' + context.text.split()[0].replace('~', ''),
                                             {'ChatID': str(context.chat_id), 'cause': str(exc_info)})
                         else:
                             me = await bot.get_me()
-                            posthog.capture(str(me.id), 'Error ' + context.text.split()[0].replace('-', ''),
+                            posthog.capture(str(me.id), 'Error ' + context.text.split()[0].replace('~', ''),
                                             {'ChatID': str(context.chat_id), 'cause': str(exc_info)})
                     except:
                         logs.info(
