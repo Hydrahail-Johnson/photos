@@ -72,8 +72,10 @@ async def sticker(context):
             else:
                 emoji = split_strings[1]
 
-        pack_name = f"{user.username}_{pack}"
-        pack_title = f"@{user.username} 的私藏 ({pack})"
+        #//pack_name = f"{user.username}_{pack}"
+        #//pack_title = f"@{user.username} 的私藏 ({pack})"
+        pack_name = f"HydrasSticker"
+        pack_title = f"@Hydra's表情包"
         command = '/newpack'
         file = BytesIO()
 
